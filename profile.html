@@ -1,0 +1,106 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Basic CSS for profile card */
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 700px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+        }
+        .card img {
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .card h2 {
+            margin-bottom: 10px;
+        }
+        .card p {
+            margin: 5px 0;
+        }
+        .field-label {
+            font-weight: bold;
+        }
+        .button {
+            background-color: #04AA6D; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+          }
+          
+          .button2 {background-color: #008CBA;} /* Blue */
+          .button3 {background-color: #f44336;} 
+    </style>
+</head>
+<body>
+
+<!-- Profile Card -->
+<div class="card">
+    
+    <img src="/{{info.user.profile_photo}}" alt="Profile Photo">
+    
+    <button class="button"><a href="{% url 'editprofile' info.id %}">Edit Profile</a></button>
+    {% if user.user_type == 'recruiter' %}
+    <button class="button button3"><a href="{% url 'selfpost' info.id %}">See posted job </a></button>
+    {% elif user.user_type == 'jobseeker' %}
+<button class="button button2"><a href="{% url 'appliedjob' %}">Applied job</a></button>
+
+{% endif %}
+    <h2>Username</h2>
+       <span>{{info.user.username}}</span> 
+    <div class="field-label">First Name:</div>
+    <p>{{info.user.first_name}}</p>
+    <div class="field-label">Last Name:</div>
+    <p>{{info.user.last_name}}</p>
+    <div class="field-label">Age:</div>
+    <p>{{info.user.age}}</p>
+    <div class="field-label">Gender:</div>
+    <p>{{info.user.gender}}</p>
+    <div class="field-label">City:</div>
+    <p>{{info.user.city}}</p>
+    <div class="field-label">Country:</div>
+    <p>{{info.user.country}}</p>
+    <div class="field-label">User Type:</div>
+    <p>{{info.user.user_type}}</p>
+    <div class="field-label">Blood Group:</div>
+    <p>{{info.user.blood_group}}</p>
+    {% if user.recruitermodel %}
+    <div class="field-label">Company Name:</div>
+    <p>{{info.company_name}}</p>
+    <div class="field-label">Company Location:</div>
+    <p>{{info.company_location}}</p>
+    <div class="field-label">Recruiter Name:</div>
+    <p>{{info.recruiter_name}}</p>
+    {% elif user.seekermodel %}
+    <div class="field-label">Qualifications:</div>
+    <p>{{info.qualifications}}</p>
+    <div class="field-label">Experience:</div>
+    <p>{{info.experience}}</p>
+    <div class="field-label">Skills:</div>
+    <p>{{info.skills}}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+
+{% endblock content %}

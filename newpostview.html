@@ -1,0 +1,90 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listing</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+
+            margin: auto;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        .logo {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .field {
+            margin-bottom: 10px;
+        }
+        .field label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="field">
+            <label for="jobTitle">Job Title:</label>
+            <p id="jobTitle">{{info.job_title}}</p>
+        </div>
+        <div class="field">
+            <label for="jobDescription">Job Description:</label>
+            <p id="jobDescription">{{info.job_description}}</p>
+        </div>
+        <div class="field">
+            <label for="jobLocation">Job Location:</label>
+            <p id="jobLocation">{{info.job_location}}</p>
+        </div>
+        <div class="field">
+            <label for="deadline">Deadline:</label>
+            <p id="deadline">{{info.deadline}}</p>
+        </div>
+        <div class="field">
+            <label for="companyLogo">Company Logo:</label><br>
+            <img id="companyLogo" class="logo" src="/{{info.company_logo}}" alt="Company Logo">
+        </div>
+        <div class="field">
+            <label for="requirements">Requirements:</label>
+            <p id="requirements">{{info.requirements}}</p>
+        </div>
+        <div class="field">
+            <label for="qualifications">Qualifications:</label>
+            <p id="qualifications">{{info.qualifications}}</p>
+        </div>
+        <div class="field">
+            <label for="jobType">Job Type:</label>
+            <p id="jobType">{{info.job_type}}</p>
+        </div>
+        <div class="field">
+            <label for="workPlace">Work Place:</label>
+            <p id="workPlace">{{info.work_place}}</p>
+        </div>
+        <div class="field">
+            <label for="salary">Salary:</label>
+            <p id="salary">{{info.salary}}</p>
+        </div>
+        <div class="field">
+            <label for="experience">Experience:</label>
+            <p id="experience">{{info.experience}}</p>
+        </div>
+        <div class="field">
+            <label for="createdBy">Created By:</label>
+            <p id="createdBy">{{info.created_by}}</p>
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% endblock content %}

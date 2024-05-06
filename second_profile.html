@@ -1,0 +1,80 @@
+
+
+{% extends "main.html" %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Basic CSS for profile card */
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 700px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+        }
+        .card img {
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .card h2 {
+            margin-bottom: 10px;
+        }
+        .card p {
+            margin: 5px 0;
+        }
+        .field-label {
+            font-weight: bold;
+        }
+        .button {
+            background-color: #04AA6D; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+          }
+          
+          .button2 {background-color: #008CBA;} /* Blue */
+          .button3 {background-color: #f44336;} 
+    </style>
+</head>
+<body>
+
+<!-- Profile Card -->
+<div class="card">
+    <h2>Username</h2>
+    <span>{{ user.username}}</span> 
+    <img src="/{{ user.profile_photo}}" alt="Profile Photo">
+    
+   </div>
+
+{% include "secondnav.html" %}
+
+<div>
+   {% block information %}
+   
+   
+   
+   {% endblock information %}
+</div>
+
+
+</body>
+</html>
+
+
+{% endblock content %}

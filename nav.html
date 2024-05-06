@@ -1,0 +1,12 @@
+<nav>
+   <a href="{% url 'dashboard' %}">Dashboard</a>
+   {% if user.user_type == 'recruiter' %}
+   <a href="{% url 'addjob' %}">Add Job</a>
+   {% elif user.user_type == 'jobseeker' %}
+   <a href="{% url 'appliedjob' %}">Applied Job</a>
+   {% endif %}
+   <a href="{% url 'viewjob' %}">View Job</a>
+   <a href="{% url 'profile' %}">Profile</a>
+   <a href="{% url 'second_profile' %}">Second Profile</a>
+   <a href="{% url 'logout' %}">Logout</a>
+</nav>

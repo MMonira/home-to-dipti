@@ -1,0 +1,16 @@
+<div>
+
+   <button class="button"><a href="{% url 'secondeditprofile' %}">Edit Second Profile</a></button>
+   {% if user.user_type == 'recruiter' %}
+   <button class="button button3"><a href="{% url 'recruiterbasic'  %}">Basic Information</a></button>
+   <button class="button button3"><a href="{% url 'recontact'  %}">Contact</a></button>
+   {% elif user.user_type == 'jobseeker' %}
+<button class="button button2"><a href="{% url 'appliedjob' %}">Applied job</a></button>
+<button class="button button2"><a href="{% url 'seekerbasic' %}">Basic Information</a></button>
+<button class="button button2"><a href="{% url 'education' %}">Education Information</a></button>
+<button class="button button2"><a href="{% url 'wexperience' %}">Work Experience</a></button>
+<button class="button button2"><a href="{% url 'seekercontact' %}">Contact</a></button>
+
+{% endif %}
+
+</div>

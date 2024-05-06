@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group input[type="file"],
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="file"] {
+        padding: 5px;
+    }
+
+    .form-group select {
+        height: 40px;
+    }
+
+    .form-group .file-label {
+        display: block;
+        margin-top: 5px;
+    }
+
+    .form-group button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .form-group button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Edit Profile Form</h2>
+    <form action="#" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" value="{{user.username}}" disabled required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname" value="{{user.first_name}}"  required>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" value="{{user.last_name}}"  required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" value="{{user.age}}"  required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+               
+                <option value="male" {% if user.gender == 'male' %}selected{% endif %}>Male</option>
+                <option value="female" {% if user.gender == 'female' %}selected{% endif %}>Female</option>
+                <option value="other" {% if user.gender == 'other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" value="{{user.city}}"  required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country"  value="{{user.country}}" required>
+        </div>
+        <div class="form-group">
+       
+         <label for="user_type">User Type:</label>
+         <select id="user_type" name="user_type" readonly>
+            <option value="recruiter" {% if user.user_type == 'recruiter' %}selected{% endif %}>Recruiter</option>
+            <option value="jobseeker" {% if user.user_type == 'jobseeker' %}selected{% endif %}>Job Seeker</option>
+         </select>
+        </div>
+        <div>
+         <input type="text" id="profile_photo" name="preprofile_photo"  value="{{user.profile_photo}}" accept="image/*">
+         <img src="/{{user.profile_photo}}" alt="" width="40px">
+
+        </div>
+        <div class="form-group">
+            <label for="profile_photo">Profile Photo</label>
+            <input type="file" id="profile_photo" name="profile_photo" accept="image/*">
+            <span class="file-label">(Optional)</span>
+        </div>
+        <div class="form-group">
+               <label for="blood_group">Blood Group:</label>
+               <select id="blood_group" name="blood_group">
+               <option value="A+" {% if user.blood_group == 'A+' %}selected{% endif %}>A+</option>
+               <option value="B+" {% if user.blood_group == 'B+' %}selected{% endif %}>B+</option>
+               <option value="AB+" {% if user.blood_group == 'AB+' %}selected{% endif %}>AB+</option>
+               <option value="O+" {% if user.blood_group == 'O+' %}selected{% endif %}>O+</option>
+               
+               </select>
+        </div>
+        {% if user.user_type == 'recruiter' %}
+        <div class="form-group">
+            <label for="company_name">Company Name</label>
+            <input type="text" id="company_name" name="company_name" value="{{user.recruitermodel.company_name}}" >
+        </div>
+        <div class="form-group">
+            <label for="company_location">Company Location</label>
+            <input type="text" id="company_location" name="company_location" value="{{user.recruitermodel.company_location}}" >
+        </div>
+        <div class="form-group">
+            <label for="recruiter_name">Recruiter Name</label>
+            <input type="text" id="recruiter_name" name="recruiter_name" value="{{user.recruitermodel.recruiter_name}}" >
+        </div>
+         
+        {% elif user.user_type == 'jobseeker' %}
+
+
+        <div class="form-group">
+         <label for="experience">Experience</label>
+         <input type="text" id="experience" name="experience"  value="{{user.seekermodel.experience}}" >
+         </div>
+        <div class="form-group">
+         <label for="qualifications">Qualifications:</label>
+         <select id="qualifications" name="qualifications">
+         <option value="masters" {% if user.qualifications == 'masters' %}selected{% endif %}>Masters</option>
+         <option value="honurs" {% if user.qualifications == 'honurs' %}selected{% endif %}>Honours</option>
+         <option value="diploma" {% if user.qualifications == 'diploma' %}selected{% endif %}>Diploma</option>
+         <option value="hsc" {% if user.qualifications == 'hsc' %}selected{% endif %}>HSC</option>
+         
+         </select>
+         </div>
+
+        <div class="form-group">
+            <label for="skills">Skills</label>
+            <input type="text" id="skills" name="skills" value="{{user.seekermodel.skills}}" >
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <button type="submit">Update Profile</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

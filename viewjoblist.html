@@ -1,0 +1,87 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        /* Basic CSS for table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Table -->
+<table>
+    <tr>
+        <th>Job Title</th>
+        <th>Job Description</th>
+        <th>Job Location</th>
+        <th>Deadline</th>
+        <th>Company Logo</th>
+        <th>Requirements</th>
+        <th>Qualifications</th>
+        <th>Job Type</th>
+        <th>Work Place</th>
+        <th>Salary</th>
+        <th>Experience</th>
+        <th>Created By</th>
+        <th>Actions</th>
+    </tr>
+  {% for i in info %}
+  
+  <tr>
+    <td>{{i.job_title}}</td>
+    <td>{{i.job_description}}</td>
+    <td>{{i.job_location}}</td>
+    <td>{{i.deadline}}</td>
+    <td>
+        <img src="/{{i.company_logo}}" alt="" width="50px">
+        
+    </td>
+    <td>{{i.requirements}}</td>
+    <td>{{i.qualifications}}</td>
+    <td>{{i.job_type}}</td>
+    <td>{{i.work_place}}</td>
+    <td>{{i.salary}}</td>
+    <td>{{i.experience}}</td>
+    <td>{{i.created_by}}</td>
+    <td>
+        {% if user.user_type == 'recruiter' %}
+        <a href="{% url 'edit' i.id  %}">Edit</a>
+        <a href="{% url 'delete' i.id %}">Delete</a>
+        {% endif %}
+        <a href="{% url 'view' i.id %}">View</a>
+    </td>
+  </tr>
+  
+  
+  {% endfor %}
+</table>
+
+</body>
+</html>
+
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Document</title>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+   {% if messages %}
+
+   {% for message in messages %}
+   
+   {% if message.tags == 'success' %}
+ 
+   <div class="w3-panel w3-pale-green w3-border">
+      <p>{{message}}</p>
+   
+   </div>
+   
+   {% elif message.tags == 'warning' %}
+   
+   <div class="w3-panel w3-pale-red w3-border">
+      <p>{{message}}</p>
+   
+   </div>
+   
+   
+   {% elif message.tags == 'error' %}
+   
+   <div class="w3-panel w3-pale-yellow w3-border">
+      <p>{{message}}</p>
+   
+   </div>
+   
+   
+   {% endif %}
+   
+   
+   {% endfor %}
+   
+   
+   
+   {% endif %}
+</body>
+</html>
