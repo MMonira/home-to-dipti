@@ -1,0 +1,108 @@
+
+username
+password
+confirm password
+firstname
+lastname
+age
+gender(male, female,other)
+city
+country
+user_type(recruiter,jobseeker)
+profile photo
+blood group(A+, B+, AB+, O+ ...)
+
+username
+password
+
+
+job title
+job description
+job location
+deadline
+company logo
+requirements
+qualifications
+job type(full time , part time)
+work place (remote , on_site)
+salary
+experience
+created by
+
+
+job title
+job description
+job location
+deadline
+company logo
+requirements
+qualifications
+job type
+work place 
+salary
+experience
+created by
+
+
+company name
+company location
+recruiter name
+
+
+qualifications
+experience
+skills
+
+
+username
+password
+confirm password
+firstname
+lastname
+age
+gender
+city
+country
+user_type
+profile photo
+blood group
+company name
+company location
+recruiter name
+qualifications
+experience
+skills
+
+
+
+
+###RENDER###
+packages:
+
+psycopg2-binary>pip install psycopg2-binary>>for 
+dj-database-url>to connect to our external database>>pip install dj-database-url
+django-environ 0.11.2 >pip install django-environ>>
+
+
+...NExt. 
+comment out >>sqlite3 section>>
+import dj-database-url (sometimes you may got : python setupi s corrictly)
+setup environ variables
+
+
+
+
+@@@ page don't extends image
+... add a prefix in urls
+...
+
+
+
+... email validation
+... form validation
+.. html form validation
+.. js form validation
+.. html form  pattern attribute
+.. data validation
+.. models fields type
+.. django documention(django messages)
